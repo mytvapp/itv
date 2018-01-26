@@ -1,0 +1,10 @@
+﻿<div id="vod" dir="rtl">
+    <div id='results' ng-class="{'results':true, 'results_fade':show_serie}">
+        <div id="{{result.id}}" class="result_info" ng-repeat="result in results">
+                <img ng-class="{'result_image':true, 'res1': (selected_id==result.id),'res2':(selected_id==result.id)}" ng-src="http://google.itv-channel.com/images/{{result.image}}" />
+                <div class="result_title">{{result.title}}</div>
+        </div>
+    </div>
+
+</div>
+<div ng-include="'pages/serie.html'"></div>

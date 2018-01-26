@@ -1,0 +1,175 @@
+﻿#main {
+    position: absolute;
+    width: 100%;
+    user-drag: none;
+    user-select: none;
+    /*cursor:none;*/
+    color: white;
+    overflow-y: hidden;
+}
+
+video.backgroundvid {
+    position: fixed; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+}
+
+.esp_main {
+    position: fixed; right: 0; bottom: 0;
+    width: 80%; height: 150px;
+    padding-left: 20%;
+    background: black;
+    color: white;
+    opacity: 0.9;
+    padding-right: 50px;
+    padding-top: 25px;
+    -webkit-transition:all linear 0.3s;
+    transition:all linear 0.3s;
+}
+
+#esp_title {
+    font-size: 45px;
+    font-family: "Narkisim";
+    margin-bottom: 4px;
+}
+
+#esp_description {
+    font-size: 26px;
+    font-family: "Arial";
+    color: white;
+}
+
+.esp_main.ng-hide {
+    opacity:0;
+    /* transform: scale(0.8); */
+    height:50px;
+}
+
+.ch_main {
+    position: fixed; left: 70px; top: 60px;
+    width: 100px; height: 75px;
+    background: black;
+    color: white;
+    font-family: "Narkisim";
+    font-size:80px;
+    letter-spacing: 5px;
+    font-stretch: expanded;
+    text-align: center;
+    opacity: 0.8;
+}
+
+#vod {
+    margin-top: 70px;
+}
+
+.results {
+    position: relative;
+    margin: auto;
+    width: 1800px;
+}
+
+.result_info {
+    width: 300px;
+    height:400px;
+    float: right;
+    font-size: 20px;
+    font-family: Arial;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.result_image {
+    margin: auto;
+    width:214px;
+    height:317px;
+    border-style: solid;
+    border-color: rgba(255,255,255,0.1);
+    border-width: 2px;
+}
+
+.res1 {
+    border-color: dodgerblue;
+    border-width: 3px;
+}
+
+.res2-add, .res2-remove {
+    transition:all linear 0.2s;
+}
+
+.res2,
+.res2-add.res2-add-active {
+    margin: auto;
+    width: 257px;
+    height: 380px;
+}
+
+.results_fade-add, .results_fade-remove {
+    transition:all linear 0.2s;
+}
+.results_fade,
+.results_fade-add.results_fade-add-active {
+    opacity: 0.1;
+}
+
+#serie {
+    position: absolute;
+    margin: auto;
+    margin-top: 100px;
+    top:150px;
+    left:490px;
+    background: black;
+    border-style: solid;
+    border-radius: 25px;
+    border-width: 1px;
+    transition:all linear .2s;
+
+    width:1200px;
+    /*min-height: 300px;*/
+
+    padding: 50px;
+}
+
+#serie.ng-hide {
+    opacity: 0;
+    width:0px;
+    /*height: 0px;*/
+    top:450px;
+    left:1090px;
+}
+
+.serie_image {
+    float: right;
+    margin-left: 25px;
+    margin-bottom: 5px;
+    width:214px;
+    height:317px;
+    border-style: solid;
+    border-color: rgba(255,255,255,0.1);
+    border-width: 2px;
+    transition:all linear .2s;
+}
+
+.serie_image.ng-hide {
+    width: 0;
+    height: 0;
+}
+
+.serie_title {
+    font-size:45px;
+    font-weight: 500;
+    font-stretch: ultra-condensed;
+    margin-bottom: 10px;
+    transition:all linear .2s;
+}
+
+.serie_title.ng-hide {
+    font-size: 0;
+}
+.serie_info {
+    font-size: 32px;
+    text-align: justify;
+    transition:all linear .2s;
+}
+
+.serie_info.ng-hide {
+    font-size: 0;
+}

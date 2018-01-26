@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" id="main">
+<head>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="scripts/angular-aria.min.js"></script>
+    <script src="scripts/angular-material.min.js"></script>
+    <script src="scripts/angucomplete-alt.js"></script>
+    <script src="scripts/multiple-date-picker.min.js"></script>
+    <script src="scripts/ng-mobile.js"></script>
+    <script src="scripts/mobile-nav.min.js"></script>
+    <script src="scripts/moment.js"></script>
+    <!--<script src="scripts/viblast.js"></script>-->
+</head>
+
+<body ng-controller="mainController" ng-init="init()" ng-keydown="keydown($event)" bgcolor="black" ng-cloak>
+    <div ng-style="{'zoom': zoomFactor+'%', 'font-size': zoomFactor+'%'}" ng-cloak ng-view></div>
+    <!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+    <script src="app/app.js"></script>
+</body>
+</html>
