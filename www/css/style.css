@@ -3,7 +3,7 @@
     width: 100%;
     user-drag: none;
     user-select: none;
-    /*cursor:none;*/
+    cursor:none;
     color: white;
     overflow-y: hidden;
 }
