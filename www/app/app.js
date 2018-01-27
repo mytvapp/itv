@@ -294,6 +294,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
     };
 
     $scope.keydown = function ($event) {
+        $event.preventDefault();
         if (lock_move) return;
         var code = $event.keyCode;
         if (code==13 || (code>=37 && code<=40)) {
