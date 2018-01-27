@@ -9,7 +9,7 @@
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none"/>
-    <preference name="webviewbounce" value="true"/>
+    <preference name="webviewbounce" value="false"/>
     <preference name="disallowOverscroll" value="true" />
     <preference name="disableCursor" value="true"/>
     <preference name="android-minSdkVersion" value="14" />
