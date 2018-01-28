@@ -1,14 +1,22 @@
-﻿<div ng-show="show_serie" id="serie" dir="rtl">
-    <img ng-show="show_serie" class='serie_image' src="http://google.itv-channel.com/images/{{serie.image}}" id="serie_bg"></img>
-    <div ng-show="show_serie" class="serie_info">
-        <div ng-show="show_serie" class="serie_title">{{serie.title}}</div>
+﻿<div id="serie" ng-show="show_serie" dir="rtl">
+    <img class='serie_image' src="http://google.itv-channel.com/images/{{serie.image}}" id="serie_bg"></img>
+    <div class="serie_info">
+        <div class="serie_title">{{serie.title}}</div>
         <div>{{serie.plot}}</div>
     </div>
-    <div>
-        <div class="seasons_title">עונות</div>
-        <div ng-repeat="season in seasons" ng-class="{'season_id':true, 'select':season_id=={{season}}}" ng-click="season_select(season)">{{season}}</div><br/>
-        <div class="seasons_title">פרקים</div>
-        <div ng-repeat="episode in episodes" ng-class="{'season_id':true, 'select':episode_id=={{episode}}}" ng-click="episode_select(episode)">{{episode}}</div><br/>
+    <div class="serie_video">
+        <table>
+            <tr>
+                <td valign="top" class="seasons_title">עונות</td>
+                <td><div ng-repeat="season in seasons" ng-class="{'season_id':true, 'select':season_id=={{season}}}" ng-click="season_select(season)">{{season}}</div></td>
+            </tr>
+            <tr>
+                <td valign="top" class="seasons_title">פרקים</td>
+                <td><div ng-repeat="episode in episodes" ng-class="{'season_id':true, 'select':episode_id=={{episode}}}" ng-click="episode_select(episode)">{{episode}}</div></td>
+            </tr>
+        </table>
+
+
     </div>
 
 </div>

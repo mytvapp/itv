@@ -6,6 +6,7 @@
     /*cursor:none;*/
     color: white;
     overflow-y: hidden;
+    font-family: Arial;
 }
 
 video.backgroundvid {
@@ -64,15 +65,14 @@ video.backgroundvid {
 .results {
     position: relative;
     margin: auto;
-    width: 1800px;
+    width: 1680px;
 }
 
 .result_info {
-    width: 300px;
-    height:400px;
+    width: 275px;
+    height:380px;
     float: right;
     font-size: 20px;
-    font-family: Arial;
     text-align: center;
     padding-bottom: 20px;
 }
@@ -98,8 +98,8 @@ video.backgroundvid {
 .res2,
 .res2-add.res2-add-active {
     margin: auto;
-    width: 257px;
-    height: 380px;
+    width: 235px;
+    height: 349px;
 }
 
 .results_fade-add, .results_fade-remove {
@@ -111,29 +111,22 @@ video.backgroundvid {
 }
 
 #serie {
-    position: absolute;
-    margin: auto;
-    margin-top: 100px;
-    top:150px;
-    left:490px;
+    position: fixed;
+    width: 1200px;
+    top: 50%;
+    left: 50%;
+    margin-left: -600px;
+    margin-top: -350px;
     background: black;
     border-style: solid;
     border-radius: 25px;
     border-width: 1px;
     transition:all linear .2s;
-
-    width:1200px;
-    /*min-height: 300px;*/
-
     padding: 50px;
 }
 
 #serie.ng-hide {
     opacity: 0;
-    width:0px;
-    /*height: 0px;*/
-    top:450px;
-    left:1090px;
 }
 
 .serie_image {
@@ -145,31 +138,48 @@ video.backgroundvid {
     border-style: solid;
     border-color: rgba(255,255,255,0.1);
     border-width: 2px;
-    transition:all linear .2s;
-}
-
-.serie_image.ng-hide {
-    width: 0;
-    height: 0;
 }
 
 .serie_title {
-    font-size:45px;
+    font-size:32px;
     font-weight: 500;
-    font-stretch: ultra-condensed;
     margin-bottom: 10px;
-    transition:all linear .2s;
 }
 
-.serie_title.ng-hide {
-    font-size: 0;
-}
 .serie_info {
-    font-size: 32px;
+    font-size: 25px;
     text-align: justify;
-    transition:all linear .2s;
 }
 
-.serie_info.ng-hide {
-    font-size: 0;
+.serie_video {
+    clear:both;
+    padding-top: 15px;
+}
+
+.seasons_title {
+    width:70px;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 500;
+    padding-top: 5px;
+    /*display: inline-block;*/
+}
+
+.season_id {
+    width:36px;
+    font-size: 20px;
+    padding-top: 10px;
+    margin-right:18px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.season_id.select {
+    font-size: 23px;
+    padding: 1px;
+    background-color: #9e5c8a;
+    color: white;
+    font-weight: 600;
 }

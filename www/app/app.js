@@ -85,7 +85,8 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
     };
 
     service.getZoomFactor = function() {
-        return Math.min(window.innerWidth/19.2, window.innerHeight/10.8);
+        return window.innerWidth/19.2;
+        //return Math.min(window.innerWidth/19.2, window.innerHeight/10.8);
     };
 
      service.changeChannel = function(id) {
@@ -187,7 +188,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
     var pos = 0;
     var elem;
     var first_line = true;
-    var lock_move = false;
     $scope.video_source;
 
     $scope.init = function () {
@@ -244,7 +244,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
             case 38:
                 if (iid >= 6) {
                     iid -= 6;
-                    $window.scrollBy(0, -420);
+                    $window.scrollBy(0, -400);
                     if (pos == 0) first_line = true;
                     else {
                         /*
@@ -291,7 +291,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                             }
                         }
                         */
-                        $window.scrollBy(0, 420, "smooth");
+                        $window.scrollBy(0, 400, "smooth");
                     }
                     first_line = false;
                 }
@@ -302,12 +302,13 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
     $scope.keydown = function ($event) {
         //$event.preventDefault();
         //$event.stopPropagation();
-        if (lock_move) return;
         var code = $event.keyCode;
-        if (code==13 || (code>=37 && code<=40)) {
+        //$scope.code1 = code;
+        if (code==13 || code==27 || (code>=37 && code<=40)) {
             if (!$scope.show_serie) serie_state(code);
             else {
                 if (code==13) $location.path('/');
+                else if (code==27) $scope.show_serie=false;
             }
         }
     };

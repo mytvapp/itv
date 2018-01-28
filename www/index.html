@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <!--<html id="main" ng-app="app">-->
-<html id="main">
+<html id="main" ng-app="app">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <script type="text/javascript">
         document.addEventListener("deviceready", function() {
             angular.bootstrap(document, ['app']);
@@ -24,7 +24,7 @@
 </head>
 
 <body ng-controller="mainController" ng-init="init()"  ng-keydown="keydown($event)" bgcolor="black">
-    <div ng-style="{'zoom': zoomFactor+'%', 'font-size': zoomFactor+'%'}" autofocus ng-view></div>
+    <div ng-style="{'zoom': zoomFactor+'%', 'font-size': zoomFactor+'%'}" ng-view></div>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script src="app/app.js"></script>
 </body>
