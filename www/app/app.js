@@ -244,8 +244,10 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
             case 38:
                 if (iid >= 6) {
                     iid -= 6;
+                    $window.scrollBy(0, -420);
                     if (pos == 0) first_line = true;
                     else {
+                        /*
                         lock_move = true;
                         var new_pos = pos;
                         var elem = document.getElementById('results');
@@ -261,6 +263,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                                 elem.style.top = new_pos + 'px';
                             }
                         }
+                        */
                     }
                 }
                 break;
@@ -271,6 +274,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                 if (iid < $scope.results.length - 6) {
                     iid += 6;
                     if (!first_line) {
+                        /*
                         lock_move = true;
                         var new_pos = pos;
                         var elem = document.getElementById('results');
@@ -286,6 +290,8 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                                 elem.style.top = new_pos + 'px';
                             }
                         }
+                        */
+                        $window.scrollBy(0, 420, "smooth");
                     }
                     first_line = false;
                 }
@@ -294,8 +300,8 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
     };
 
     $scope.keydown = function ($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
+        //$event.preventDefault();
+        //$event.stopPropagation();
         if (lock_move) return;
         var code = $event.keyCode;
         if (code==13 || (code>=37 && code<=40)) {
