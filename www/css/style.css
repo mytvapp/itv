@@ -161,24 +161,30 @@ video.backgroundvid {
     text-align: left;
     font-size: 24px;
     font-weight: 500;
-    padding-top: 5px;
     /*display: inline-block;*/
 }
 
 .season_id {
-    width:36px;
+    width: 36px;
+    height: 24px;
     font-size: 20px;
-    padding-top: 10px;
     margin-right:18px;
     margin-bottom: 10px;
     text-align: center;
-    cursor: pointer;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
     display: inline-block;
+
 }
 
-.season_id.select {
-    font-size: 23px;
-    padding: 1px;
+.season_id.focus {
+    border-color: #9e5c8a;
+}
+
+.season_id.selected {
+    font-size: 20px;
     background-color: #9e5c8a;
     color: white;
     font-weight: 600;

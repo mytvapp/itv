@@ -193,6 +193,8 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
     $scope.init = function () {
         $scope.video_url = '';
         $scope.show_serie = false;
+        $scope.choose_season = false;
+        $scope.play_video = false;
         $scope.results = [];
         $scope.serie = [];
 
@@ -207,10 +209,9 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
 
     var change_selection = function () {
         $scope.selected_id=$scope.results[iid].id;
-        //$location.hash($scope.selected_id);
         $scope.$apply();
 
-        if (!lock && iid>$scope.results.length-10) {
+        if (!lock && iid>$scope.results.length-12) {
             page += 1;
             lock = true;
             $http.jsonp(vod_domain + 'series.php?callback=JSON_CALLBACK&p=' + page)
@@ -226,13 +227,15 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
             .success(function (data) {
                 $scope.serie = data;
                 $scope.seasons = Object.keys(data.episodes);
-                $scope.season_id = $scope.seasons[$scope.seasons.length - 1];
-                $scope.episodes = Object.keys(data.episodes[$scope.season_id]);
+                $scope.season_id = $scope.seasons.length-1;
+                load_episodes();
+                $scope.choose_season = false;
                 $scope.show_serie = true;
+                $scope.play_episode = false;
             });
     };
 
-    var serie_state = function (dirval) {
+    var choose_serie = function (dirval) {
         if (dirval==13) {
             load_serie();
             return;
@@ -246,25 +249,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                     iid -= 6;
                     $window.scrollBy(0, -400);
                     if (pos == 0) first_line = true;
-                    else {
-                        /*
-                        lock_move = true;
-                        var new_pos = pos;
-                        var elem = document.getElementById('results');
-                        var id1 = setInterval(frame, 10);
-
-                        function frame() {
-                            if (new_pos == pos + 420) {
-                                pos = new_pos;
-                                clearInterval(id1);
-                                lock_move = false;
-                            } else {
-                                new_pos += 20;
-                                elem.style.top = new_pos + 'px';
-                            }
-                        }
-                        */
-                    }
                 }
                 break;
             case 39:
@@ -273,30 +257,50 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
             case 40:
                 if (iid < $scope.results.length - 6) {
                     iid += 6;
-                    if (!first_line) {
-                        /*
-                        lock_move = true;
-                        var new_pos = pos;
-                        var elem = document.getElementById('results');
-                        var id1 = setInterval(frame, 10);
-
-                        function frame() {
-                            if (new_pos == pos - 420) {
-                                pos = new_pos;
-                                clearInterval(id1);
-                                lock_move = false;
-                            } else {
-                                new_pos -= 20;
-                                elem.style.top = new_pos + 'px';
-                            }
-                        }
-                        */
-                        $window.scrollBy(0, 400, "smooth");
-                    }
+                    if (!first_line) $window.scrollBy(0, 400, "smooth");
                     first_line = false;
                 }
         }
         change_selection();
+    };
+
+    var choose_episode = function (dirval) {
+
+        if (dirval == 13) {
+            if ($scope.choose_season) $scope.choose_season = false;
+            else play_episode();
+        }
+        else if (dirval == 27) $scope.show_serie = false;
+        else {
+            switch (dirval) {
+                case 37:
+                    if ($scope.choose_season && $scope.season_id < $scope.seasons.length - 1) {
+                        $scope.season_id++;
+                        load_episodes();
+                    }
+                    else if (!$scope.choose_season && $scope.episode_id < $scope.episodes.length - 1) $scope.episode_id++;
+                    break;
+                case 38:
+                    $scope.choose_season = true;
+                    break;
+                case 39:
+                    if ($scope.choose_season && $scope.season_id > 0) {
+                        $scope.season_id--;
+                        load_episodes();
+                    }
+                    else if (!$scope.choose_season && $scope.episode_id > 0) $scope.episode_id--;
+                    break;
+                case 40:
+                    $scope.choose_season = false;
+            }
+        }
+    };
+
+    var video_mode = function (dirval) {
+        if (dirval == 13) {
+            $scope.play_episode = false;
+            $location.path('/');
+        }
     };
 
     $scope.keydown = function ($event) {
@@ -305,27 +309,20 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
         var code = $event.keyCode;
         //$scope.code1 = code;
         if (code==13 || code==27 || (code>=37 && code<=40)) {
-            if (!$scope.show_serie) serie_state(code);
-            else {
-                if (code==13) $location.path('/');
-                else if (code==27) $scope.show_serie=false;
-            }
+            if (!$scope.show_serie) choose_serie(code);
+            else if (!$scope.play_episode) choose_episode(code);
+            else video_mode(code);
         }
     };
 
-    $scope.season_select = function (season) {
-        $scope.season_id = season;
-        $scope.episode_id = -1;
-        $scope.episodes = Object.keys($scope.serie.episodes[$scope.season_id]);
+    var load_episodes = function () {
+        $scope.episodes = Object.keys($scope.serie.episodes[$scope.seasons[$scope.season_id]]);
+        $scope.episode_id = $scope.episodes.length-1;
     };
 
-    $scope.episode_select = function (episode) {
-        $scope.episode_id = episode;
-        /*
-        $scope.video_ref = 'http://vod.itv-channel.com/video.php?ref=' + $scope.serie.episodes[$scope.season_id][$scope.episode_id];
-        $location.path('video');
-        */
-        $http.jsonp(vod_domain + 'sources.php?callback=JSON_CALLBACK&ref=' + $scope.serie.episodes[$scope.season_id][$scope.episode_id])
+    var play_episode = function () {
+        $scope.play_episode = true;
+        $http.jsonp(vod_domain + 'sources.php?callback=JSON_CALLBACK&ref=' + $scope.serie.episodes[$scope.seasons[$scope.season_id]][$scope.episodes[$scope.episode_id]])
             .success(function (data) {
                 dataShare.set('video_source', data[0].file);
                 $location.path('video');
