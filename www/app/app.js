@@ -183,7 +183,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
     var iid = 0;
     var lock;
     var pos = 0;
-    var elem;
     var first_line = true;
 
     $scope.init = function () {
@@ -200,7 +199,10 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                 $scope.results.push.apply($scope.results, data);
                 $scope.selected_id = data[iid].id;
             });
-        elem = document.getElementById('results');
+
+        document.addEventListener('backbutton', function (evt) {
+            keypressed(27);
+        }, false);
     };
 
     var change_selection = function () {
@@ -319,14 +321,15 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
 
     $scope.keydown = function ($event) {
         //$event.stopPropagation();
-        $event.preventDefault();
+        //$event.preventDefault();
         var code = $event.keyCode;
-        //$scope.code1 = code;
-        if (code==13 || code==27 || (code>=37 && code<=40)) {
-            if (!$scope.show_serie) choose_serie(code);
-            else if (!$scope.play_episode) choose_episode(code);
-            else video_mode(code);
-        }
+        if (code==13 || code==27 || (code>=37 && code<=40)) keypressed(code);
+    };
+
+    var keypressed = function (code) {
+        if (!$scope.show_serie) choose_serie(code);
+        else if (!$scope.play_episode) choose_episode(code);
+        else video_mode(code);
     };
 
     var load_episodes = function () {
