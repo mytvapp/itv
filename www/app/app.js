@@ -321,7 +321,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
 
     $scope.keydown = function ($event) {
         //$event.stopPropagation();
-        //$event.preventDefault();
+        $event.preventDefault();
         var code = $event.keyCode;
         //$scope.code1 = code;
         if (code==13 || code==27 || (code>=37 && code<=40)) {
