@@ -6,6 +6,11 @@
     <script type="text/javascript">
         document.addEventListener("deviceready", function() {
             angular.bootstrap(document, ['app']);
+            document.addEventListener('backbutton', function (evt) {
+                evt.preventDefault();
+                evt.stopPropagation();
+                angular.element('[ng-controller=mainController]').keypressed(27);
+            }, false);
         }, false);
     </script>
     <link rel="stylesheet" href="css/style.css">
