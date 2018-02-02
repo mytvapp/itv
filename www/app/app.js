@@ -69,9 +69,8 @@ app.config(function ($sceDelegateProvider) {
     ]);
 });
 
-app.factory('dataShare', function ($http, $location, $timeout, $window) {
+app.factory('dataShare', function ($http, $location, $timeout) {
     var service = {};
-    var pagePromise = null;
     service.data = {};
 
     service.get = function () {
@@ -176,7 +175,7 @@ app.controller('vodController', function ($scope, $rootScope, $http, $window, $t
 });
 */
 
-app.controller('mainController', function ($scope, $rootScope, $http, $location, $window, $timeout, dataShare, $sce) {
+app.controller('mainController', function ($scope, $rootScope, $http, $location, $window, $timeout, dataShare) {
     $scope.dataShare = dataShare;
     $scope.zoomFactor = dataShare.getZoomFactor();
     //$scope.selected_id = 0;
@@ -186,7 +185,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
     var pos = 0;
     var elem;
     var first_line = true;
-    $scope.video_source;
 
     $scope.init = function () {
         $scope.video_url = '';
