@@ -69,8 +69,6 @@ app.config(function ($sceDelegateProvider) {
     ]);
 });
 
-
-
 app.factory('dataShare', function ($http, $location, $timeout, $window) {
     var service = {};
     var pagePromise = null;
@@ -178,7 +176,7 @@ app.controller('vodController', function ($scope, $rootScope, $http, $window, $t
 });
 */
 
-app.controller('mainController', function ($scope, $rootScope, $http, $location, $window, $document, $timeout, dataShare, $sce) {
+app.controller('mainController', function ($scope, $rootScope, $http, $location, $window, $timeout, dataShare, $sce) {
     $scope.dataShare = dataShare;
     $scope.zoomFactor = dataShare.getZoomFactor();
     //$scope.selected_id = 0;
@@ -265,47 +263,65 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
     };
 
     var choose_episode = function (dirval) {
-
-        if (dirval == 13) {
-            if ($scope.choose_season) $scope.choose_season = false;
-            else play_episode();
-        }
-        else if (dirval == 27) $scope.show_serie = false;
-        else {
-            switch (dirval) {
-                case 37:
-                    if ($scope.choose_season && $scope.season_id < $scope.seasons.length - 1) {
-                        $scope.season_id++;
-                        load_episodes();
-                    }
-                    else if (!$scope.choose_season && $scope.episode_id < $scope.episodes.length - 1) $scope.episode_id++;
-                    break;
-                case 38:
-                    $scope.choose_season = true;
-                    break;
-                case 39:
-                    if ($scope.choose_season && $scope.season_id > 0) {
-                        $scope.season_id--;
-                        load_episodes();
-                    }
-                    else if (!$scope.choose_season && $scope.episode_id > 0) $scope.episode_id--;
-                    break;
-                case 40:
-                    $scope.choose_season = false;
-            }
+        switch (dirval) {
+            case 13:
+                if ($scope.choose_season) $scope.choose_season = false;
+                else play_episode();
+                break;
+            case 27:
+                $scope.show_serie = false;
+                break;
+            case 37:
+                if ($scope.choose_season && $scope.season_id < $scope.seasons.length - 1) {
+                    $scope.season_id++;
+                    load_episodes();
+                }
+                else if (!$scope.choose_season && $scope.episode_id < $scope.episodes.length - 1) $scope.episode_id++;
+                break;
+            case 38:
+                $scope.choose_season = true;
+                break;
+            case 39:
+                if ($scope.choose_season && $scope.season_id > 0) {
+                    $scope.season_id--;
+                    load_episodes();
+                }
+                else if (!$scope.choose_season && $scope.episode_id > 0) $scope.episode_id--;
+                break;
+            case 40:
+                $scope.choose_season = false;
+                break;
         }
     };
 
     var video_mode = function (dirval) {
-        if (dirval == 13) {
-            $scope.play_episode = false;
-            $location.path('/');
+        var vid = document.getElementById("backgroundvid");
+        switch (dirval) {
+            case 13:
+                (vid.paused) ? vid.play() : vid.pause();
+                break;
+            case 27:
+                $scope.play_episode = false;
+                $location.path('/');
+                break;
+            case 37:
+                vid.currentTime = vid.currentTime - 30;
+                break;
+            case 38:
+                vid.currentTime = vid.currentTime + 600;
+                break;
+            case 39:
+                vid.currentTime = vid.currentTime + 30;
+                break;
+            case 40:
+                vid.currentTime = vid.currentTime - 600;
+                break;
         }
     };
 
     $scope.keydown = function ($event) {
-        //$event.preventDefault();
         //$event.stopPropagation();
+        //$event.preventDefault();
         var code = $event.keyCode;
         //$scope.code1 = code;
         if (code==13 || code==27 || (code>=37 && code<=40)) {
