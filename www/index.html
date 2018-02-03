@@ -8,7 +8,7 @@
             angular.bootstrap(document, ['app']);
             document.addEventListener('backbutton', function (evt) {
                 <!--angular.element('[ng-controller=mainController]').scope().deviceButton(evt);-->
-                <!--$evt.preventDefault();-->
+                $evt.stopPropagation();
             }, false);
         }, false);
     </script>
