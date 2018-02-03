@@ -175,7 +175,7 @@ app.controller('vodController', function ($scope, $rootScope, $http, $window, $t
 });
 */
 
-app.controller('mainController', function ($scope, $rootScope, $http, $location, $window, $timeout, dataShare) {
+app.controller('mainController', function ($scope, $rootScope, $http, $location, $window, $document, $timeout, dataShare) {
     $scope.dataShare = dataShare;
     $scope.zoomFactor = dataShare.getZoomFactor();
     //$scope.selected_id = 0;
@@ -202,16 +202,11 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                 $scope.selected_id = data[iid].id;
             });
 
-        /*
-        document.addEventListener('backbutton', function (evt) {
-            $evt.preventDefault();
-            var e = $.Event("keydown");
-            e.keyCode = 27;
-            e.which = 27;
-            var body1 = document.getElementById("body1");
-            body1.trigger(e);
+        $document.addEventListener('backbutton', function () {
+            event.preventDefault();
+            deviceButton(27);
         }, false);
-        */
+
 
     };
 
