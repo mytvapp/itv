@@ -7,12 +7,13 @@
         document.addEventListener("deviceready", function() {
             angular.bootstrap(document, ['app']);
             document.addEventListener('backbutton', function (evt) {
-                evt.preventDefault();
                 <!--angular.element('[ng-controller=mainController]').scope().deviceButton(evt);-->
                 var e = $.Event("keydown");
                 e.keyCode = 27;
                 e.which = 27;
                 $('#body1').trigger(e);
+                evt.preventDefault();
+                evt.stopPropagation();
             }, false);
         }, false);
     </script>
