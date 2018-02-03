@@ -202,10 +202,10 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                 $scope.selected_id = data[iid].id;
             });
 
-        document.addEventListener('backbutton', function () {
+        $document.addEventListener('backbutton', function () {
             event.preventDefault();
             $scope.deviceButton(27);
-        }, true);
+        }, false);
 
 
     };
