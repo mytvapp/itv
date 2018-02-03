@@ -204,7 +204,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
 
         document.addEventListener('backbutton', function (evt) {
             $evt.preventDefault();
-            var code = $evt.keyCode;
+            var code = 27;
             $scope.code2 = code;
             keypressed(code);
         }, false);
