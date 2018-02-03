@@ -329,7 +329,10 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
         if (code==13 || code==27 || (code>=37 && code<=40)) keypressed(code);
     };
 
-    var devicebutton = function (code) {
+    $scope.deviceButton = function ($event) {
+        //$event.stopPropagation();
+        $event.preventDefault();
+        var code = $event.keyCode;
         $scope.code2 = code;
         keypressed(code);
         $scope.$apply();
