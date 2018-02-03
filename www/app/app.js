@@ -204,10 +204,13 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
 
         document.addEventListener('backbutton', function (evt) {
             $evt.preventDefault();
-            var code = 27;
-            $scope.code2 = code;
-            keypressed(code);
+            var e = $.Event("keydown");
+            e.keyCode = 27;
+            e.which = 27;
+            var body1 = document.getElementById("body1");
+            body1.trigger(e);
         }, false);
+
     };
 
     var change_selection = function () {
