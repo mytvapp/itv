@@ -247,7 +247,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
             case 38:
                 if (iid >= 6) {
                     iid -= 6;
-                    $window.scrollBy(0, -400);
+                    $window.scrollBy(0, -4*$scope.zoomFactor);
                     if (pos == 0) first_line = true;
                 }
                 break;
@@ -257,7 +257,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
             case 40:
                 if (iid < $scope.results.length - 6) {
                     iid += 6;
-                    if (!first_line) $window.scrollBy(0, 400, "smooth");
+                    if (!first_line) $window.scrollBy(0, 4*$scope.zoomFactor);
                     first_line = false;
                 }
         }
