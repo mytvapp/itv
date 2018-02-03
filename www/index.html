@@ -9,11 +9,17 @@
             document.addEventListener('backbutton', function (evt) {
                 <!--angular.element('[ng-controller=mainController]').scope().deviceButton(evt);-->
                 $evt.stopPropagation();
+                $evt.preventDefault();
+                var e = $.Event("keydown");
+                e.keyCode = 27;
+                e.which = 27;
+                $('#body1').trigger(e);
             }, false);
         }, false);
     </script>
     <link rel="stylesheet" href="css/style.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/angular-route.min.js"></script>
     <script src="scripts/angular-animate.min.js"></script>
@@ -27,7 +33,7 @@
     <!--<script src="scripts/viblast.js"></script>-->
 </head>
 
-<body ng-controller="mainController" ng-init="init()" ng-keydown="keydown($event)" bgcolor="black">
+<body id="body1" ng-controller="mainController" ng-init="init()" ng-keydown="keydown($event)" bgcolor="black">
     <div ng-style="{'zoom': zoomFactor+'%', 'font-size': zoomFactor+'%'}" ng-view></div>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script src="app/app.js"></script>
