@@ -193,6 +193,8 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
         $scope.results = [];
         $scope.serie = [];
 
+        $scope.width = window.innerWidth;
+        $scope.height = window.innerHeight;
         $http.jsonp(vod_domain + 'series.php?callback=JSON_CALLBACK')
             .success(function (data) {
 
@@ -324,6 +326,11 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
         //$event.preventDefault();
         var code = $event.keyCode;
         if (code==13 || code==27 || (code>=37 && code<=40)) keypressed(code);
+    };
+
+    var devicebutton = function (code) {
+        keypressed(code);
+        $scope.$apply();
     };
 
     var keypressed = function (code) {
