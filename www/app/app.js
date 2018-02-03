@@ -330,7 +330,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
 
     var devicebutton = function (code) {
         keypressed(code);
-        $scope.$apply();
+        /*$scope.$apply();*/
     };
 
     var keypressed = function (code) {
