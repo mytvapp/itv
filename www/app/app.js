@@ -202,11 +202,9 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                 $scope.selected_id = data[iid].id;
             });
 
-        /*
         document.addEventListener('backbutton', function (evt) {
-            keypressed(27);
+            $scope.deviceButton(evt);
         }, false);
-        */
     };
 
     var change_selection = function () {
@@ -332,12 +330,12 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
     };
 
     $scope.deviceButton = function ($event) {
-        /*$event.stopPropagation();*/
+        //$event.stopPropagation();
         $event.preventDefault();
         var code = $event.keyCode;
         $scope.code2 = code;
         keypressed(code);
-        $scope.$apply();
+        //$scope.$apply();
     };
 
     var keypressed = function (code) {
