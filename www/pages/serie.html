@@ -8,11 +8,11 @@
         <table>
             <tr>
                 <td valign="top" class="seasons_title">עונות</td>
-                <td ng-repeat="season in seasons" ng-class="{'season_id':true, 'focus':choose_season&&seasons[season_id]=={{season}}, 'selected':!choose_season&&seasons[season_id]=={{season}}}">{{season}}</td>
+                <td style="border-style: solid"><div ng-repeat="season in seasons" ng-class="{'season_id':true, 'focus':choose_season&&seasons[season_id]=={{season}}, 'selected':!choose_season&&seasons[season_id]=={{season}}}">{{season}}</div></td>
             </tr>
             <tr>
                 <td valign="top" class="seasons_title">פרקים</td>
-                <td ng-repeat="episode in episodes" ng-class="{'season_id':true, 'focus':!choose_season&&episodes[episode_id]=={{episode}}, 'selected':play_episode&&episodes[episode_id]=={{episode}}}">{{episode}}</td>
+                <td style="border-style: solid"><div ng-repeat="episode in episodes" ng-class="{'season_id':true, 'focus':!choose_season&&episodes[episode_id]=={{episode}}, 'selected':play_episode&&episodes[episode_id]=={{episode}}}">{{episode}}</div></td>
             </tr>
         </table>
 
