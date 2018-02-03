@@ -202,9 +202,11 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                 $scope.selected_id = data[iid].id;
             });
 
+        /*
         document.addEventListener('backbutton', function (evt) {
             keypressed(27);
         }, false);
+        */
     };
 
     var change_selection = function () {

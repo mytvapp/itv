@@ -8,12 +8,13 @@
             angular.bootstrap(document, ['app']);
             document.addEventListener('backbutton', function (evt) {
                 <!--angular.element('[ng-controller=mainController]').scope().deviceButton(evt);-->
-                $evt.stopPropagation();
                 $evt.preventDefault();
+                <!--
                 var e = $.Event("keydown");
                 e.keyCode = 27;
                 e.which = 27;
                 $('#body1').trigger(e);
+                -->
             }, false);
         }, false);
     </script>
