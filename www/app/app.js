@@ -337,9 +337,11 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
         if (code==13 || code==27 || (code>=37 && code<=40)) keypressed(code);
     };
 
-    $scope.deviceButton = function ($event) {
+    $scope.deviceButton = function (code) {
         //$event.stopPropagation();
-        //$scope.$apply();
+        $scope.code2 = code;
+        keypressed(code);
+        $scope.$apply();
     };
 
     var keypressed = function (code) {
