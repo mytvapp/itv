@@ -204,8 +204,8 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
 
         document.addEventListener('backbutton', function () {
             event.preventDefault();
-            deviceButton(27);
-        }, false);
+            $scope.deviceButton(27);
+        }, true);
 
 
     };
@@ -332,7 +332,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
         if (code==13 || code==27 || (code>=37 && code<=40)) keypressed(code);
     };
 
-    var deviceButton = function (code) {
+    $scope.deviceButton = function (code) {
         //$event.stopPropagation();
         $scope.code2 = code;
         keypressed(code);
