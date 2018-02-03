@@ -202,6 +202,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                 $scope.selected_id = data[iid].id;
             });
 
+        /*
         document.addEventListener('backbutton', function (evt) {
             $evt.preventDefault();
             var e = $.Event("keydown");
@@ -210,6 +211,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
             var body1 = document.getElementById("body1");
             body1.trigger(e);
         }, false);
+        */
 
     };
 
