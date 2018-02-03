@@ -202,9 +202,9 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                 $scope.selected_id = data[iid].id;
             });
 
-        document.addEventListener('backbutton', function (evt) {
+        document.addEventListener('backbutton', function ($evt) {
             $evt.preventDefault();
-            var code = evt.keyCode;
+            var code = $evt.keyCode;
             $scope.code2 = code;
             keypressed(code);
         }, false);
