@@ -330,9 +330,8 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
     };
 
     $scope.deviceButton = function ($event) {
-        $event.stopPropagation();
+        /*$event.stopPropagation();*/
         $event.preventDefault();
-        $scope.$apply();
         var code = $event.keyCode;
         $scope.code2 = code;
         keypressed(code);
