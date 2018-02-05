@@ -203,6 +203,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
             });
 
         document.addEventListener('backbutton', function () {
+            VideoPlayer.close();
             $scope.deviceButton(27);
         }, false);
 
