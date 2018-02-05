@@ -257,6 +257,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                 if (iid > 0) iid -= 1;
                 break;
             case 40:
+                VideoPlayer.play("http://techslides.com/demos/sample-videos/small.mp4");
                 if (iid < $scope.results.length - 6) {
                     iid += 6;
                     if (!first_line) $window.scrollBy(0, 4*$scope.zoomFactor);
