@@ -8,7 +8,7 @@
     </feature>
     <name>itv</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        web tv application
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
@@ -21,6 +21,9 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <preference name="DisallowOverscroll" value="true" />
+    <preference name="permissions" value="none" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="disallowOverscroll" value="true" />
+    <preference name="disableCursor" value="true" />
     <preference name="android-minSdkVersion" value="14" />
 </widget>
