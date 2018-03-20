@@ -356,7 +356,8 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
         $http.jsonp(vod_domain + 'sources.php?callback=JSON_CALLBACK&ref=' + $scope.serie.episodes[$scope.seasons[$scope.season_id]][$scope.episodes[$scope.episode_id]])
             .success(function (data) {
                 dataShare.set('video_source', data[0].file);
-                $location.path('video');
+                //$location.path('video');
+                VideoPlayer.play(data[0].file);
             });
 
     };
