@@ -258,7 +258,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $location,
                 if (iid > 0) iid -= 1;
                 break;
             case 40:
-                VideoPlayer.play("http://2.telek.me:8080/2109/3034/ba0d4e4cf3bc0f19f2f3b8f48691a00c8e1ccf08");
+                //VideoPlayer.play("http://2.telek.me:8080/2109/3034/ba0d4e4cf3bc0f19f2f3b8f48691a00c8e1ccf08");
                 if (iid < $scope.results.length - 6) {
                     iid += 6;
                     if (!first_line) $window.scrollBy(0, 4*$scope.zoomFactor);
