@@ -5,7 +5,7 @@
         <div>{{serie.plot}}</div>
     </div>
     <div class="serie_video">
-        <table border="1" width="100%">
+        <table width="100%">
             <tr>
                 <td valign="top" class="seasons_title">עונות</td>
                 <td><div ng-repeat="season in seasons" ng-class="{'season_id':true, 'focus':choose_season&&seasons[season_id]=={{season}}, 'selected':!choose_season&&seasons[season_id]=={{season}}}">{{season}}</div></td>
