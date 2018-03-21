@@ -105,6 +105,7 @@
 .results_fade-add, .results_fade-remove {
     transition:all linear 0.2s;
 }
+
 .results_fade,
 .results_fade-add.results_fade-add-active {
     opacity: 0.1;
